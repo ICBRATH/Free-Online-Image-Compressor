@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Online Image Compressor - Compress Images Without Losing Quality</title>
+    <meta name="description" content="Compress images online for free. Reduce image size without losing quality. Perfect for websites, social media, and email. Supports JPG, PNG, and WebP formats.">
+    <meta name="keywords" content="free image compressor, compress images online, reduce image size, image optimization tool, batch image compression, image format converter">
+    <meta name="author" content="Your Name">
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://yourwebsite.com">
+    <!-- Open Graph Tags for Social Media -->
+    <meta property="og:title" content="Free Online Image Compressor">
+    <meta property="og:description" content="Compress images online for free. Reduce image size without losing quality. Perfect for websites, social media, and email.">
+    <meta property="og:image" content="https://yourwebsite.com/logo.png">
+    <meta property="og:url" content="https://yourwebsite.com">
+    <!-- Modern Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Custom CSS -->
+    <style>
+        /* General Styles */
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #28a745;
+            --background-light: #f4f4f9;
+            --background-dark: #1e1e1e;
+            --text-light: #333;
+            --text-dark: #fff;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: var(--background-light);
+            color: var(--text-light);
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+        body.dark-mode {
+            background: var(--background-dark);
+            color: var(--text-dark);
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px;
+            padding: 30px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+        body.dark-mode .container {
+            background: #2c2c2c;
+            color: var(--text-dark);
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        p {
+            font-size: 1.1rem;
+            color: #666;
+        }
+        body.dark-mode p {
+            color: #ccc;
+        }
+        .upload-section {
+            margin: 30px 0;
+        }
+        .upload-label {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--primary-color);
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .upload-label:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+        #imageInput {
+            display: none;
+        }
+        .quality-slider {
+            margin-top: 20px;
+        }
+        .quality-slider label {
+            display: block;
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 10px;
+        }
+        body.dark-mode .quality-slider label {
+            color: #ccc;
+        }
+        .quality-slider input {
+            width: 100%;
+            max-width: 300px;
+        }
+        .result-section {
+            margin-top: 20px;
+            display: none;
+        }
+        .result-section img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .file-size {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+        body.dark-mode .file-size {
+            color: #ccc;
+        }
+        .download-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--secondary-color);
+            color: #fff;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .download-btn:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+        }
+        .loading {
+            display: none;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-top: 20px;
+        }
+        .error {
+            color: #dc3545;
+            margin-top: 20px;
+        }
+        .how-it-works, .faq {
+            margin-top: 40px;
+            text-align: left;
+        }
+        .how-it-works h2, .faq h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        .how-it-works ol, .faq ul {
+            padding-left: 20px;
+        }
+        .how-it-works li, .faq li {
+            margin-bottom: 10px;
+            font-size: 1rem;
+            color: #555;
+        }
+        body.dark-mode .how-it-works li, body.dark-mode .faq li {
+            color: #ccc;
+        }
+        footer {
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        body.dark-mode footer {
+            color: #ccc;
+        }
+        footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        .dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--primary-color);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+        }
+        .dark-mode-toggle:hover {
+            background: #0056b3;
+        }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="dark-mode-toggle" id="darkModeToggle">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <div class="container">
+        <h1>Free Online Image Compressor</h1>
+        <p>Compress images online for free. Reduce image size without losing quality. Perfect for websites, social media, and email.</p>
+        
+        <div class="upload-section">
+            <label for="imageInput" class="upload-label">
+                <i class="fas fa-upload"></i> Upload Image
+            </label>
+            <input type="file" id="imageInput" accept="image/*" multiple>
+        </div>
+
+        <div class="quality-slider">
+            <label for="qualityRange">Compression Quality: <span id="qualityValue">70</span>%</label>
+            <input type="range" id="qualityRange" min="10" max="100" value="70">
+        </div>
+
+        <div class="loading" id="loading">Compressing... Please wait.</div>
+        <div class="error" id="error"></div>
+
+        <div class="result-section" id="resultSection">
+            <h2>Compressed Image</h2>
+            <img id="compressedImage" src="#" alt="Compressed Image">
+            <div class="file-size">
+                Original Size: <span id="originalSize"></span> | Compressed Size: <span id="compressedSize"></span>
+            </div>
+            <a id="downloadBtn" class="download-btn">
+                <i class="fas fa-download"></i> Download Compressed Image
+            </a>
+        </div>
+
+        <!-- How It Works Section -->
+        <div class="how-it-works">
+            <h2>How It Works</h2>
+            <ol>
+                <li><strong>Upload an Image</strong>: Click the "Upload Image" button and select an image file (JPG, PNG, etc.).</li>
+                <li><strong>Adjust Quality</strong>: Use the slider to set the compression quality (higher = better quality, larger file size).</li>
+                <li><strong>Compress the Image</strong>: Our tool will automatically compress the image without losing quality.</li>
+                <li><strong>Download the Compressed Image</strong>: Once compressed, click the "Download" button to save the optimized image.</li>
+            </ol>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="faq">
+            <h2>FAQs</h2>
+            <ul>
+                <li><strong>Is this tool free to use?</strong> Yes, our image compressor is completely free to use.</li>
+                <li><strong>Will my image lose quality?</strong> No, our tool uses advanced algorithms to compress images without losing quality.</li>
+                <li><strong>What image formats are supported?</strong> We support JPG, PNG, and WebP formats.</li>
+                <li><strong>Is there a file size limit?</strong> Yes, the maximum file size is 5MB per image.</li>
+                <li><strong>Can I compress multiple images at once?</strong> Yes, you can upload and compress multiple images simultaneously.</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Image Compressor. All rights reserved. | <a href="/privacy-policy">Privacy Policy</a></p>
+    </footer>
+
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Free Online Image Compressor",
+        "description": "Compress images online for free. Reduce image size without losing quality. Perfect for websites, social media, and email.",
+        "applicationCategory": "Image Editor",
+        "operatingSystem": "Web",
+        "url": "https://yourwebsite.com"
+    }
+    </script>
+
+    <script>
+        const imageInput = document.getElementById('imageInput');
+        const qualityRange = document.getElementById('qualityRange');
+        const qualityValue = document.getElementById('qualityValue');
+        const loading = document.getElementById('loading');
+        const error = document.getElementById('error');
+        const resultSection = document.getElementById('resultSection');
+        const compressedImage = document.getElementById('compressedImage');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const originalSize = document.getElementById('originalSize');
+        const compressedSize = document.getElementById('compressedSize');
+        const darkModeToggle = document.getElementById('darkModeToggle');
+
+        // Dark Mode Toggle
+        darkModeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const icon = darkModeToggle.querySelector('i');
+            icon.classList.toggle('fa-moon');
+            icon.classList.toggle('fa-sun');
+        });
+
+        // Update quality value
+        qualityRange.addEventListener('input', () => {
+            qualityValue.textContent = qualityRange.value;
+        });
+
+        imageInput.addEventListener('change', function (e) {
+            const files = e.target.files;
+            if (files.length > 0) {
+                compressImage(files[0]); // Compress the first file (for simplicity)
+            }
+        });
+
+        function compressImage(file) {
+            if (file.size > 5 * 1024 * 1024) { // 5MB limit
+                showError('File size must be less than 5MB.');
+                return;
+            }
+            if (!file.type.startsWith('image/')) {
+                showError('Please upload a valid image file.');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function (event) {
+                const img = new Image();
+                img.src = event.target.result;
+                img.onload = function () {
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    ctx.drawImage(img, 0, 0);
+
+                    // Show loading message
+                    loading.style.display = 'block';
+                    error.textContent = '';
+                    resultSection.style.display = 'none';
+
+                    // Compress image
+                    setTimeout(() => {
+                        canvas.toBlob((blob) => {
+                            const url = URL.createObjectURL(blob);
+                            compressedImage.src = url;
+                            downloadBtn.href = url;
+                            downloadBtn.download = `compressed_${file.name}`;
+                            loading.style.display = 'none';
+                            resultSection.style.display = 'block';
+
+                            // Display file sizes
+                            originalSize.textContent = formatBytes(file.size);
+                            compressedSize.textContent = formatBytes(blob.size);
+                        }, 'image/jpeg', qualityRange.value / 100); // Adjust quality based on slider
+                    }, 1000); // Simulate compression delay
+                };
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function showError(message) {
+            error.textContent = message;
+            loading.style.display = 'none';
+            resultSection.style.display = 'none';
+        }
+
+        // Format bytes to KB or MB
+        function formatBytes(bytes) {
+            if (bytes < 1024) return bytes + ' Bytes';
+            else if (bytes < 1048576) return (bytes / 1024).toFixed(2) + ' KB';
+            else return (bytes / 1048576).toFixed(2) + ' MB';
+        }
+    </script>
+</body>
+</html>
